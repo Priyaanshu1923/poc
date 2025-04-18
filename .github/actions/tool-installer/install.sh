@@ -11,6 +11,15 @@ if [[ ! -f "$TOOL_PATH" ]]; then
   exit 1
 fi
 
+if [[ -f "$installer" ]]; then
+  chmod +x "$installer"
+  bash "$installer" "$version"
+else
+  echo "Unsupported tool: $tool"
+  exit 1
+fi
+
+
 echo " Installing $TOOL (version: ${VERSION:-latest}) "
 
 # Simulate dynamic usage by printing usage block
