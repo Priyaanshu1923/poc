@@ -20,7 +20,7 @@ runs:
 
     - name: Install Python2
       if: ${{ inputs.tool == 'python' }}
-      uses: .github/actions/tool-installer/tools/python.yml
+      uses: .github/actions/tool-installer/tools/python
       with:
         version: ${{ inputs.version }}
 
