@@ -1,5 +1,5 @@
 name: Tool Installer
-description: Dispatches to specific tool installers
+description: Dispatch to tool installers
 inputs:
   tool:
     required: true
@@ -9,7 +9,20 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Dispatch to tool installer
-      uses: ./.github/actions/tool-installer/tools/${{ inputs.tool }}
+    - name: Install Python
+      if: ${{ inputs.tool == 'python' }}
+      uses: ./.github/actions/tool-installer/tools/python.yml
+      with:
+        version: ${{ inputs.version }}
+
+    - name: Install Node.js
+      if: ${{ inputs.tool == 'node' }}
+      uses: ./.github/actions/tool-installer/tools/node.yml
+      with:
+        version: ${{ inputs.version }}
+
+    - name: Install MATLAB
+      if: ${{ inputs.tool == 'matlab' }}
+      uses: ./.github/actions/tool-installer/tools/matlab.yml
       with:
         version: ${{ inputs.version }}
