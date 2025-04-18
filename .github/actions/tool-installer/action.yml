@@ -26,14 +26,14 @@ runs:
 
       
 
-    # - name: Install Node.js
-    #   if: ${{ inputs.tool == 'node' }}
-    #   uses: ./.github/actions/tool-installer/tools/node/action.yml
-    #   with:
-    #     version: ${{ inputs.version }}
+    - name: Install Node.js
+      if: ${{ inputs.tool == 'node' }}
+      uses: ./.github/actions/tool-installer/tools/node/action.yml
+      with:
+        version: ${{ inputs.version }}
 
-    # - name: Install MATLAB
-    #   if: ${{ inputs.tool == 'matlab' }}
-    #   uses: ./.github/actions/tool-installer/tools/matlab/action.yml
-    #   with:
-    #     version: ${{ inputs.version }}
+    - name: Install MATLAB
+      if: ${{ inputs.tool == 'matlab' }}
+      uses: ./.github/actions/tool-installer/tools/matlab/action.yml
+      with:
+        version: ${{ inputs.version }}
