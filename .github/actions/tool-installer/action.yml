@@ -12,5 +12,5 @@ runs:
   steps:
     - run: |
         chmod +x ./install.sh
-        ./install.sh "${{ inputs.tool }}" "${{ inputs.version }}"
+        ./.github/actions/tool-installer/install.sh "${{ inputs.tool }}" "${{ inputs.version }}"
       shell: bash
