@@ -9,22 +9,20 @@ inputs:
 runs:
   using: "composite"
   steps:
-   - name: Checkout source
-     uses: actions/checkout@v3
-        
+    - name: Checkout source
+      uses: actions/checkout@v3
+
     - name: Install Python
       if: ${{ inputs.tool == 'python' }}
       uses: ./.github/actions/tool-installer/tools/python/action.yml
       with:
         version: ${{ inputs.version }}
 
-    -  name: Install Python2
+    - name: Install Python2
       if: ${{ inputs.tool == 'python' }}
       uses: ./.github/actions/tool-installer/tools/python.yml
       with:
         version: ${{ inputs.version }}
-
-      
 
     - name: Install Node.js
       if: ${{ inputs.tool == 'node' }}
