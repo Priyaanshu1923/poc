@@ -1,6 +1,5 @@
 name: Tool Installer
-description: Installs a tool with optional version
-
+description: Dispatches to specific tool installers
 inputs:
   tool:
     required: true
@@ -8,9 +7,9 @@ inputs:
     required: false
 
 runs:
-  using: composite
+  using: "composite"
   steps:
-    - run: |
-        chmod +x ./.github/actions/tool-installer/install.sh
-        ./.github/actions/tool-installer/install.sh "${{ inputs.tool }}" "${{ inputs.version }}"
-      shell: bash
+    - name: Dispatch to tool installer
+      uses: ./.github/actions/tool-installer/tools/${{ inputs.tool }}
+      with:
+        version: ${{ inputs.version }}
