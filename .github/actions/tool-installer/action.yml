@@ -10,7 +10,7 @@ runs:
   using: "composite"
   steps:
    - name: Checkout source
-        uses: actions/checkout@v3
+     uses: actions/checkout@v3
         
     - name: Install Python
       if: ${{ inputs.tool == 'python' }}
